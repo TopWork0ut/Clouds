@@ -20,11 +20,12 @@ public class SecurityConfig {
         });
         http.formLogin(httpSecurityFormLoginConfigurer -> {
             try {
-                httpSecurityFormLoginConfigurer.init(http);
+                httpSecurityFormLoginConfigurer.defaultSuccessUrl("/swagger-ui/index.html").init(http);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         });
+
         http.logout(httpSecurityLogoutConfigurer -> httpSecurityLogoutConfigurer.init(http));
 
         return http.build();
