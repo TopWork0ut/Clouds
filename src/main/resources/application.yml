@@ -21,8 +21,4 @@ spring:
 server:
   port: 8080
 
-<<<<<<< HEAD
-#  username: root
-#  password: fireman9
-=======
->>>>>>> 29e6ba7bf6f79139f5a3bd111693ffd08d63203c
+
