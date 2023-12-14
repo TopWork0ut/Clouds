@@ -21,7 +21,7 @@ jobs:
           with:
             aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
             aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            aws-region: eu-central-1
+            aws-region: us-east-1
 
         - name: Login to Amazon ECR
           id: login-ecr
@@ -33,8 +33,8 @@ jobs:
             ECR_REPOSITORY: my_repo
           run: |
             docker build -t $ECR_REPOSITORY .
-            docker tag $ECR_REPOSITORY:latest ${{secrets.ACCOUNT_ID}}.dkr.ecr.eu-central-1.amazonaws.com/$ECR_REPOSITORY:latest
-            docker push ${{secrets.ACCOUNT_ID}}.dkr.ecr.eu-central-1.amazonaws.com/$ECR_REPOSITORY:latest
+            docker tag $ECR_REPOSITORY:latest ${{secrets.ACCOUNT_ID}}.dkr.ecr.us-east-1.amazonaws.com/$ECR_REPOSITORY:latest
+            docker push ${{secrets.ACCOUNT_ID}}.dkr.ecr.us-east-1.amazonaws.com/$ECR_REPOSITORY:latest
         - name: Update service
           if: github.event_name == 'push'
           run: aws ecs update-service --cluster back-end-cluster --service back-end-service --force-new-deployment
