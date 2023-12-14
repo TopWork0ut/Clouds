@@ -30,7 +30,7 @@ jobs:
         - name: Build, tag, and push the image to Amazon ECR
           id: build-image
           env:
-            ECR_REPOSITORY: back-end-repository
+            ECR_REPOSITORY: my_repo
           run: |
             docker build -t $ECR_REPOSITORY .
             docker tag $ECR_REPOSITORY:latest ${{secrets.ACCOUNT_ID}}.dkr.ecr.eu-central-1.amazonaws.com/$ECR_REPOSITORY:latest
