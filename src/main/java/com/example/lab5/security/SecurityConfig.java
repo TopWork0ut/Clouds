@@ -14,6 +14,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http.httpBasic(httpSecurityHttpBasicConfigurer -> {
+//            httpSecurityHttpBasicConfigurer.init(http);
+//        });
         http.csrf(AbstractHttpConfigurer::disable);
         http.authorizeHttpRequests(httpRequests->{
             httpRequests.requestMatchers("/auth/register").permitAll().anyRequest().authenticated();

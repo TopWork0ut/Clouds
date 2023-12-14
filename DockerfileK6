@@ -1,0 +1,5 @@
+FROM grafana/k6
+COPY k6.js /k6.js
+CMD ["run", "/k6.js"]
+
+
